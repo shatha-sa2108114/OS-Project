@@ -1,13 +1,22 @@
 #!/bin/bash
 
 bigfile="bigfile"
-system_admin_email="sa2103114@qu.edu.qa" #assuming shatha  is the system adminstrator since shes the host
-sender_email="ra2103056@qu.edu.qa" #my email
+system_admin_email="reemakib0@gmail.com"  
+sender_email="operatingsys2024@gmail.com"  
 
 find . -type f -size +1M > "$bigfile"
-echo "Search Date: $(date)" >> "$bigfile"
-echo "Number of files found: $(wc -l < "$bigfile")" >> "$bigfile"
+echo "current date: $(date '+%Y-%m-%d %H:%M:%S')" >> "$bigfile"
+echo "number of files fo: $(wc -l < "$bigfile")" >> "$bigfile"
 
-if [ -s "$bigfile" ]; then
-    mail -s "Big Files Report" "$system_admin_email" -r "$sender_email" < "$bigfile"
+if [ -s "$bigfile" ]
+ then
+
+    msmtp --from="$sender_email" "$system_admin_email" <<EOF
+Subject: Big Files Report
+
+ the files larger than 1MB:
+
+$(cat "$bigfile")
+
+EOF
 fi
