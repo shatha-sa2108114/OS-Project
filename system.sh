@@ -45,8 +45,10 @@ for subdir in "$HOME"/*
 done
 
 echo "system information at date: $(date '+%Y-%m-%d %H:%M:%S')" | tee -a mem_cpu_info.log
-# get memory used and calculate percentage, only taking col 3 and col 2 (used mem and total mem) 
+#get memory used and calculate percentage, only taking col 3 and col 2 (used mem and total mem) 
 free -m | grep Mem | awk '{printf "memory used: %s MB out of %s MB (%.2f%% used)\n", $3, $2, ($3/$2)*100}' | tee -a mem_cpu_info.log 
+#get total and used memory and calculate free percentage
+free -m | grep Mem | awk '{printf "free memory left: %s MB out of %s MB (%.2f%% free)\n", $2-$3, $2, (($2-$3)/$2)*100}' | tee -a mem_cpu_info.log
 echo "CPU model:" | tee -a mem_cpu_info.log
 lscpu | grep "Model name" | tee -a mem_cpu_info.log # get model name from cpu info ls
 echo "number of CPU cores:" | tee -a mem_cpu_info.log
