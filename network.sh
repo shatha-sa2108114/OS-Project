@@ -4,7 +4,6 @@ for target in "$@"; do
     success=true  # to track the overall success of the pings
     
     #using loop instead of ping -c 3 to see at which exact attempt the ping has failed or succeeded 
-    for i in {1..3}; do
     for i in {1..3}
      do
         echo "$i: pinging $target" | tee -a network.log
