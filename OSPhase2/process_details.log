@@ -8,14 +8,14 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |-colord---2*[{colord}]
         |-cron
         |-cups-browsed---2*[{cups-browsed}]
-        |-cupsd---dbus
+        |-cupsd
         |-dbus-daemon
         |-gdm3-+-gdm-session-wor-+-gdm-wayland-ses-+-gnome-session-b---2*[{gnome-session-b}]
         |      |                 |                 `-2*[{gdm-wayland-ses}]
         |      |                 `-2*[{gdm-session-wor}]
         |      `-2*[{gdm3}]
         |-gnome-keyring-d-+-ssh-agent
-        |                 `-3*[{gnome-keyring-d}]
+        |                 `-4*[{gnome-keyring-d}]
         |-2*[kerneloops]
         |-networkd-dispat
         |-packagekitd---2*[{packagekitd}]
@@ -28,6 +28,8 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |-switcheroo-cont---2*[{switcheroo-cont}]
         |-systemd-+-(sd-pam)
         |         |-at-spi2-registr---2*[{at-spi2-registr}]
+        |         |-check-new-relea---3*[{check-new-relea}]
+        |         |-chrome_crashpad---2*[{chrome_crashpad}]
         |         |-dbus-daemon
         |         |-dconf-service---2*[{dconf-service}]
         |         |-evolution-addre---5*[{evolution-addre}]
@@ -45,31 +47,28 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |         |-gnome-session-c---{gnome-session-c}
         |         |-gnome-shell-+-Xwayland
         |         |             |-code-+-code---code---10*[{code}]
-        |         |             |      |-code---code-+-code---10*[{code}]
-        |         |             |      |             |-code---12*[{code}]
-        |         |             |      |             `-code---9*[{code}]
+        |         |             |      |-code---code-+-code---12*[{code}]
+        |         |             |      |             `-2*[code---9*[{code}]]
         |         |             |      |-code---6*[{code}]
-        |         |             |      |-3*[code---15*[{code}]]
+        |         |             |      |-5*[code---15*[{code}]]
         |         |             |      |-code---17*[{code}]
-        |         |             |      |-code-+-java---29*[{java}]
+        |         |             |      |-code-+-java---32*[{java}]
+        |         |             |      |      |-jcmd---13*[{jcmd}]
         |         |             |      |      `-15*[{code}]
         |         |             |      `-37*[{code}]
-        |         |             |-firefox-+-2*[Isolated Web Co---15*[{Isolated Web Co}]]
-        |         |             |         |-Isolated Web Co---30*[{Isolated Web Co}]
-        |         |             |         |-2*[Isolated Web Co---16*[{Isolated Web Co}]]
-        |         |             |         |-Privileged Cont---16*[{Privileged Cont}]
+        |         |             |-firefox-+-Isolated Web Co---16*[{Isolated Web Co}]
+        |         |             |         |-Privileged Cont---17*[{Privileged Cont}]
         |         |             |         |-RDD Process---4*[{RDD Process}]
         |         |             |         |-Socket Process---5*[{Socket Process}]
         |         |             |         |-Utility Process---4*[{Utility Process}]
-        |         |             |         |-2*[Web Content---12*[{Web Content}]]
-        |         |             |         |-Web Content---13*[{Web Content}]
+        |         |             |         |-3*[Web Content---13*[{Web Content}]]
         |         |             |         |-WebExtensions---16*[{WebExtensions}]
-        |         |             |         `-83*[{firefox}]
+        |         |             |         `-73*[{firefox}]
         |         |             |-gjs---5*[{gjs}]
-        |         |             `-11*[{gnome-shell}]
+        |         |             `-8*[{gnome-shell}]
         |         |-gnome-shell-cal---5*[{gnome-shell-cal}]
-        |         |-gnome-terminal--+-2*[bash]
-        |         |                 |-bash---java---14*[{java}]
+        |         |-gnome-terminal--+-bash
+        |         |                 |-bash---java---15*[{java}]
         |         |                 |-bash---java---13*[{java}]
         |         |                 |-bash---java-+-clientinfo.sh---pstree
         |         |                 |             `-14*[{java}]
@@ -82,7 +81,7 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |         |-gsd-housekeepin---3*[{gsd-housekeepin}]
         |         |-gsd-keyboard---3*[{gsd-keyboard}]
         |         |-gsd-media-keys---3*[{gsd-media-keys}]
-        |         |-gsd-power---3*[{gsd-power}]
+        |         |-gsd-power---4*[{gsd-power}]
         |         |-gsd-print-notif---2*[{gsd-print-notif}]
         |         |-gsd-printer---2*[{gsd-printer}]
         |         |-gsd-rfkill---2*[{gsd-rfkill}]
@@ -101,11 +100,11 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |         |       |-gvfsd-network---3*[{gvfsd-network}]
         |         |       |-gvfsd-trash---2*[{gvfsd-trash}]
         |         |       `-2*[{gvfsd}]
-        |         |-gvfsd-fuse---5*[{gvfsd-fuse}]
+        |         |-gvfsd-fuse---6*[{gvfsd-fuse}]
         |         |-gvfsd-metadata---2*[{gvfsd-metadata}]
         |         |-ibus-portal---2*[{ibus-portal}]
         |         |-ibus-x11---2*[{ibus-x11}]
-        |         |-nautilus---5*[{nautilus}]
+        |         |-nautilus---4*[{nautilus}]
         |         |-pipewire---{pipewire}
         |         |-pipewire-media----{pipewire-media-}
         |         |-pulseaudio---3*[{pulseaudio}]
@@ -115,7 +114,6 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |         |                  |-ibus-memconf---2*[{ibus-memconf}]
         |         |                  `-2*[{ibus-daemon}]
         |         |-snap---5*[{snap}]
-        |         |-snap-store---4*[{snap-store}]
         |         |-snapd-desktop-i---snapd-desktop-i---4*[{snapd-desktop-i}]
         |         |-tracker-miner-f---5*[{tracker-miner-f}]
         |         |-xdg-desktop-por---5*[{xdg-desktop-por}]
@@ -123,40 +121,49 @@ systemd-+-ModemManager---2*[{ModemManager}]
         |         |-xdg-document-po-+-fusermount3
         |         |                 `-6*[{xdg-document-po}]
         |         `-xdg-permission----2*[{xdg-permission-}]
+        |-systemd-+-(sd-pam)
+        |         |-dbus-daemon
+        |         |-pipewire---{pipewire}
+        |         |-pipewire-media----{pipewire-media-}
+        |         |-pulseaudio---2*[{pulseaudio}]
+        |         |-snap-confine
+        |         |-xdg-document-po-+-fusermount3
+        |         |                 `-6*[{xdg-document-po}]
+        |         `-xdg-permission----3*[{xdg-permission-}]
         |-systemd-journal
         |-systemd-logind
         |-systemd-oomd
         |-systemd-resolve
         |-systemd-timesyn---{systemd-timesyn}
-        |-systemd-udevd
+        |-systemd-udevd---systemd-udevd
         |-udisksd---4*[{udisksd}]
         |-unattended-upgr---{unattended-upgr}
         |-upowerd---2*[{upowerd}]
         `-wpa_supplicant
 
 Zombie Processes:
-shatha     48587  0.0  0.1  18192  2560 pts/3    S+   14:17   0:00 grep -w Z
+shatha     33376  0.0  0.1  18192  2560 pts/3    S+   19:22   0:00 grep -w Z
 
 ==== CPU Information ====
-%Cpu(s): 25.0 us,  0.0 sy,  0.0 ni,  0.0 id,  0.0 wa,  0.0 hi, 75.0 si,  0.0 st
+%Cpu(s): 11.1 us, 44.4 sy,  0.0 ni,  0.0 id,  0.0 wa,  0.0 hi, 44.4 si,  0.0 st
 
 ---- Top 5 CPU Resource-Consuming Processes ----
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-shatha      1492 13.7  8.3 4241840 211424 ?      Ssl  10:54  27:57 /usr/bin/gnome-shell
-shatha     48525  6.0  1.7 2734088 44148 pts/3   Sl+  14:17   0:00 java MyClient2
-shatha      6400  3.9 10.1 1215908624 256884 ?   Sl   11:05   7:37 /usr/share/code/code --type=renderer --enable-crash-reporter=111e4ce3-77b2-487c-b7a7-cdfc639a2504,no_channel --user-data-dir=/home/shatha/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --app-path=/usr/share/code/resources/app --enable-sandbox --enable-blink-features=HighlightAPI --disable-blink-features=FontMatchingCTMigration, --lang=en-US --num-raster-threads=1 --renderer-client-id=5 --time-ticks-at-unix-epoch=-1732866846007910 --launch-time-ticks=700417692 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,4151778417496504372,4492141880735660115,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess --variations-seed-version --vscode-window-config=vscode:d295ed82-b050-4264-ba9a-9aa38ba362da
-shatha      1982  2.9 11.6 12406988 294404 ?     Sl   10:55   5:56 /snap/firefox/5361/usr/lib/firefox/firefox
-shatha      6648  2.7 11.6 3230176 294896 ?      Rl   11:08   5:16 /snap/firefox/5361/usr/lib/firefox/firefox -contentproc -isForBrowser -prefsHandle 0 -prefsLen 36484 -prefMapHandle 1 -prefMapSize 258553 -jsInitHandle 2 -jsInitLen 234660 -parentBuildID 20241125231607 -sandboxReporter 3 -chrootClient 4 -ipcHandle 5 -initialChannelId {65b76eea-305f-4e4a-a4f0-5e251ba6c975} -parentPid 1982 -crashReporter 6 -greomni /snap/firefox/5361/usr/lib/firefox/omni.ja -appomni /snap/firefox/5361/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/5361/usr/lib/firefox/browser 21 tab
+client1    33234 12.7  0.0   4968     0 ?        Ds   19:22   0:01 /usr/lib/snapd/snap-exec snapd-desktop-integration.snapd-desktop-integration
+shatha     33369  8.0  1.2 2618800 30720 ?       Sl   19:22   0:00 /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/jre/17.0.13-linux-x86_64/bin/jcmd 9738 VM.uptime
+shatha      1492  7.3  9.2 3978116 233976 ?      Rsl  17:12   9:34 /usr/bin/gnome-shell
+client1    33232  5.8  0.8 305972 22628 ?        Ssl  19:22   0:00 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+client1    33352  5.0  0.2 472156  7424 ?        Ssl  19:22   0:00 /usr/libexec/xdg-document-portal
 
 ==== Memory Information ====
                total        used        free      shared  buff/cache   available
-Mem:           2.4Gi       1.8Gi       101Mi        71Mi       487Mi       358Mi
-Swap:          3.1Gi       2.5Gi       684Mi
+Mem:           2.4Gi       1.7Gi       102Mi        83Mi       595Mi       459Mi
+Swap:          3.1Gi       1.6Gi       1.5Gi
 
 ---- Top 5 Memory Resource-Consuming Processes ----
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-shatha      7191  2.3 13.9 3363476 352396 ?      Sl   11:15   4:22 /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/jre/17.0.13-linux-x86_64/bin/java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable -javaagent:/home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/lombok/lombok-1.18.34.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/shatha/.config/Code/User/workspaceStorage/d36a2864a45bc5e202a517a612a4918e/redhat.java -Daether.dependencyCollector.impl=bf -jar /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/server/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar -configuration /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux -data /home/shatha/.config/Code/User/workspaceStorage/d36a2864a45bc5e202a517a612a4918e/redhat.java/jdt_ws --pipe=/run/user/1000/lsp-d1c3da322cad9dcbe3449c6ee2d82210.sock
-shatha      6648  2.7 11.7 3230176 296248 ?      Sl   11:08   5:16 /snap/firefox/5361/usr/lib/firefox/firefox -contentproc -isForBrowser -prefsHandle 0 -prefsLen 36484 -prefMapHandle 1 -prefMapSize 258553 -jsInitHandle 2 -jsInitLen 234660 -parentBuildID 20241125231607 -sandboxReporter 3 -chrootClient 4 -ipcHandle 5 -initialChannelId {65b76eea-305f-4e4a-a4f0-5e251ba6c975} -parentPid 1982 -crashReporter 6 -greomni /snap/firefox/5361/usr/lib/firefox/omni.ja -appomni /snap/firefox/5361/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/5361/usr/lib/firefox/browser 21 tab
-shatha      1982  2.9 11.6 12406988 294404 ?     Sl   10:55   5:56 /snap/firefox/5361/usr/lib/firefox/firefox
-shatha      6400  3.9 10.1 1215908624 256884 ?   Sl   11:05   7:37 /usr/share/code/code --type=renderer --enable-crash-reporter=111e4ce3-77b2-487c-b7a7-cdfc639a2504,no_channel --user-data-dir=/home/shatha/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --app-path=/usr/share/code/resources/app --enable-sandbox --enable-blink-features=HighlightAPI --disable-blink-features=FontMatchingCTMigration, --lang=en-US --num-raster-threads=1 --renderer-client-id=5 --time-ticks-at-unix-epoch=-1732866846007910 --launch-time-ticks=700417692 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,4151778417496504372,4492141880735660115,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess --variations-seed-version --vscode-window-config=vscode:d295ed82-b050-4264-ba9a-9aa38ba362da
-shatha      1492 13.7  8.3 4241840 211424 ?      Ssl  10:54  27:57 /usr/bin/gnome-shell
+shatha      2179  2.0 14.1 2998168 358652 ?      Sl   17:12   2:35 /snap/firefox/5361/usr/lib/firefox/firefox -contentproc -isForBrowser -prefsHandle 0 -prefsLen 28764 -prefMapHandle 1 -prefMapSize 258667 -jsInitHandle 2 -jsInitLen 234660 -parentBuildID 20241125231607 -sandboxReporter 3 -chrootClient 4 -ipcHandle 5 -initialChannelId {8718b814-2bc7-45fa-86ef-61fb70430e40} -parentPid 1971 -crashReporter 6 -greomni /snap/firefox/5361/usr/lib/firefox/omni.ja -appomni /snap/firefox/5361/usr/lib/firefox/browser/omni.ja -appDir /snap/firefox/5361/usr/lib/firefox/browser 3 tab
+shatha      9738  3.7 13.4 3391444 340348 ?      Sl   17:47   3:33 /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/jre/17.0.13-linux-x86_64/bin/java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -DDetectVMInstallationsJob.disabled=true -Dfile.encoding=utf8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable -javaagent:/home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/lombok/lombok-1.18.34.jar -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java -Daether.dependencyCollector.impl=bf -jar /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/server/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar -configuration /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux -data /home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java/jdt_ws --pipe=/run/user/1000/lsp-a38bbe469b9831647f5b45cdf92615a3.sock
+shatha      3284  3.7 11.1 1215899180 281432 ?   Rl   17:19   4:37 /usr/share/code/code --type=renderer --crashpad-handler-pid=3135 --enable-crash-reporter=111e4ce3-77b2-487c-b7a7-cdfc639a2504,no_channel --user-data-dir=/home/shatha/.config/Code --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --app-path=/usr/share/code/resources/app --enable-sandbox --enable-blink-features=HighlightAPI --disable-blink-features=FontMatchingCTMigration, --lang=en-US --num-raster-threads=1 --renderer-client-id=4 --time-ticks-at-unix-epoch=-1732975857245036 --launch-time-ticks=501255711 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,12439011218036778957,658580050804962551,262144 --disable-features=CalculateNativeWinOcclusion,SpareRendererForSitePerProcess --variations-seed-version --vscode-window-config=vscode:3162a1bd-1b26-4378-9a72-4362780793b1
+shatha      1492  7.3  9.2 3978116 233976 ?      Rsl  17:12   9:34 /usr/bin/gnome-shell
+shatha      1971  1.4  8.1 11407696 205332 ?     Sl   17:12   1:49 /snap/firefox/5361/usr/lib/firefox/firefox

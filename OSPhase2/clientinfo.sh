@@ -40,7 +40,7 @@ while true; do
         cpu_info
         echo
         memory_info
-    } > process_details.log
+    } | tee process_details.log
 
     copy_to_server "process_details.log"
     sleep 3600

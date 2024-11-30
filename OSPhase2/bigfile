@@ -29,16 +29,19 @@
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/1DB552211DB8C98433C758FB417BD178546DD5BE
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/9F7BF89CECB74511FCC2056A0E65EABBAFFEA647
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/6060C3FBE98468C305DF810D3DCC41F2B9BBF205
+/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/A429A2634E79A94788CBF14CB42473B0ADD62BE1
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/48C787EA80079D173DB15C0BED43271DEBBD1918
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/1A1F94E993CB5F81B1659E731E2A57003DB3D30D
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/227E52B26A1F9F684F3559D3CC592BF52CB2F3C6
+/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/592D43CC0A46D59396ED5EA0848686B26331BE21
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/5C26A006AC929091B1E63BCE8B8C3B974057BA9F
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/774634DC30BF4257FD68235875909B1831E2CEDB
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/5BF640809BEF6E12501C2C301C678F421962ED09
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/safebrowsing/google-trackwhite-digest256.vlpset
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/safebrowsing/google4/goog-phish-proto.vlpset
+/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache-current.bin
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/startupCache.8.little
-/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache.bin
+/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache-child-current.bin
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache-child.bin
 /home/shatha/snap/firefox/common/.cache/mesa_shader_cache/index
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/places.sqlite-wal
@@ -47,6 +50,7 @@
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/security_state/data.safe.bin
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/gmp-gmpopenh264/2.3.2/libgmpopenh264.so
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/storage/permanent/chrome/idb/3870112724rsegmnoittet-es.sqlite
+/home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/storage/default/https+++mail.google.com/cache/caches.sqlite
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/favicons.sqlite-wal
 /home/shatha/snap/snap-store/common/.cache/gnome-software/odrs/ratings.json
 /home/shatha/snap/snap-store/common/.cache/gnome-software/appstream/components.xmlb
@@ -62,9 +66,13 @@
 /home/shatha/.config/Code/CachedExtensionVSIXs/visualstudioexptteam.intellicode-api-usage-examples-0.2.9
 /home/shatha/.config/Code/CachedExtensionVSIXs/vscjava.vscode-java-test-0.43.0
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/58/0/.cp/lib/java-decompiler-engine-231.9011.34.jar
+/home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/118/0/.cp/lib/lucene-analyzers-common-5.5.5.jar
+/home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/118/0/.cp/lib/lucene-core-5.5.5.jar
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/98/0/.cp/lib/rxjava-2.2.21.jar
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/12/0/.cp/lib/ant.jar
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_ss_linux/org.eclipse.osgi/40/0/.cp/lib/java-decompiler-engine-231.9011.34.jar
+/home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+/home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/900586112.index
 /home/shatha/.config/Code/User/workspaceStorage/d36a2864a45bc5e202a517a612a4918e/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
 /home/shatha/.config/Code/User/workspaceStorage/d36a2864a45bc5e202a517a612a4918e/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/900586112.index
 /home/shatha/.vscode/extensions/vscjava.vscode-gradle-3.16.4/lib/gradle-tooling-api-8.8.jar
@@ -107,5 +115,5 @@
 /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/lombok/lombok-1.18.34.jar
 /home/shatha/.vscode/extensions/visualstudioexptteam.intellicode-api-usage-examples-0.2.9/dist/server/server.js
 /home/shatha/.vscode/extensions/visualstudioexptteam.intellicode-api-usage-examples-0.2.9/dist/extension.js
-current date: 2024-11-29 14:17:31
-number of files fo: 110
+current date: 2024-11-30 19:22:09
+number of files fo: 118

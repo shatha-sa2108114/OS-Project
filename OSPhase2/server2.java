@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class MyServer {
+public class server2 {
 	
 	public static void main(String args[])
 	{
@@ -23,7 +23,7 @@ public class MyServer {
 				System.out.println("Receiving Request From "+nextClient.getInetAddress()+ ":" +
 						nextClient.getPort());
 				//serving each client on a different socket after the it accepts client request
-				Service servThread = new Service(nextClient);
+				service2 servThread = new service2(nextClient);
 				servThread.start();
 				
 			}
@@ -41,4 +41,3 @@ public class MyServer {
 	} //End main
 
 }
-

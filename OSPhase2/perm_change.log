@@ -1,12 +1,1 @@
 No files with 777 permissions found.
-No files with 777 permissions found.
-No files with 777 permissions found.
-No files with 777 permissions found.
-No files with 777 permissions found.
-No files with 777 permissions found.
-No files with 777 permissions found.
-Files with 777 permissions found:
-./testcheck/file1
-./testcheck/file2
-changed permissions of file: './testcheck/file1' from 777 to 700
-changed permissions of file: './testcheck/file2' from 777 to 700

@@ -67,7 +67,7 @@ function handle_excessive_attempts() {
     if scp_with_expect "client1" "amira1998" "localhost" "$AttempsLog" "./"; then
         echo "log file copied to server :)."
     else
-        echo "fail to copy log file to server." >> "$AttempsLog"
+        echo "fail to copy log file to server." | tee "$AttempsLog"
     fi
 }
 
@@ -86,7 +86,7 @@ function main() {
         exit 0
     else
         echo "login fail :("
-        echo "$timeStamp: fail login attempt for user $user" >> "$AttempsLog"
+        echo "$timeStamp: fail login attempt for user $user" | tee "$AttempsLog"
         exit 1
     fi
 }
