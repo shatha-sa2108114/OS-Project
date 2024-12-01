@@ -3,7 +3,7 @@ import java.net.*;
 import java.nio.file.*;
 
 
-public class client11 {
+public class client1 {
 
     public static void main(String[] args) {
         Socket client = null;
@@ -57,7 +57,7 @@ public class client11 {
                            (bytes_read = input_stream.read(buffer, 0, (int)Math.min(buffer.length, file_size - total_bytes_read))) != -1) {
                         file_out.write(buffer, 0, bytes_read);
                         total_bytes_read += bytes_read;
-                        System.out.println("received bytes:  " + totalBytesRead + " of file total:  " + file_size + " bytes");
+                        System.out.println("received bytes:  " + total_bytes_read + " of file total:  " + file_size + " bytes");
                     }
                     
                     file_out.close();
@@ -76,7 +76,7 @@ public class client11 {
 
                     File received_file = new File(file_name);
                     if (received_file.exists()) {
-                        System.out.println("file exists: " + receivedFile.length() + " bytes");
+                        System.out.println("file exists: " + received_file.length() + " bytes");
                     } else {
                         System.out.println("file not found ):");
                     }

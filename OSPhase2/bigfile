@@ -1,3 +1,4 @@
+/home/shatha/OSProject/disk_info.log
 /home/shatha/.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23Audio.db
 /home/shatha/.cache/tracker3/files/meta.db-wal
 /home/shatha/.cache/tracker3/files/http%3A%2F%2Ftracker.api.gnome.org%2Fontology%2Fv3%2Ftracker%23FileSystem.db
@@ -33,6 +34,7 @@
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/48C787EA80079D173DB15C0BED43271DEBBD1918
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/1A1F94E993CB5F81B1659E731E2A57003DB3D30D
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/227E52B26A1F9F684F3559D3CC592BF52CB2F3C6
+/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/DCF79933D6855A1E99D0C72B43DA9D79F131D2C4
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/592D43CC0A46D59396ED5EA0848686B26331BE21
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/5C26A006AC929091B1E63BCE8B8C3B974057BA9F
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/cache2/entries/774634DC30BF4257FD68235875909B1831E2CEDB
@@ -42,7 +44,6 @@
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache-current.bin
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/startupCache.8.little
 /home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache-child-current.bin
-/home/shatha/snap/firefox/common/.cache/mozilla/firefox/dsyry8z4.default/startupCache/scriptCache-child.bin
 /home/shatha/snap/firefox/common/.cache/mesa_shader_cache/index
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/places.sqlite-wal
 /home/shatha/snap/firefox/common/.mozilla/firefox/dsyry8z4.default/places.sqlite
@@ -71,10 +72,16 @@
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/98/0/.cp/lib/rxjava-2.2.21.jar
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_linux/org.eclipse.osgi/12/0/.cp/lib/ant.jar
 /home/shatha/.config/Code/User/globalStorage/redhat.java/1.37.0/config_ss_linux/org.eclipse.osgi/40/0/.cp/lib/java-decompiler-engine-231.9011.34.jar
+/home/shatha/.config/Code/User/workspaceStorage/28e485eb8ffba1223b91280f2363a651/redhat.java/jdt_ws/OSProject_d07016a8/bin/disk_info.log
+/home/shatha/.config/Code/User/workspaceStorage/28e485eb8ffba1223b91280f2363a651/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+/home/shatha/.config/Code/User/workspaceStorage/28e485eb8ffba1223b91280f2363a651/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/900586112.index
 /home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
 /home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/900586112.index
+/home/shatha/.config/Code/User/workspaceStorage/f1bba081db070dda9217670268ddffe5/redhat.java/jdt_ws/OS_Project2_61b1a7/bin/disk_info.log
 /home/shatha/.config/Code/User/workspaceStorage/d36a2864a45bc5e202a517a612a4918e/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
 /home/shatha/.config/Code/User/workspaceStorage/d36a2864a45bc5e202a517a612a4918e/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core/900586112.index
+/home/shatha/.local/share/Trash/files/disk_info.2.log
+/home/shatha/.local/share/Trash/files/fileLargerThan1MB.txt
 /home/shatha/.vscode/extensions/vscjava.vscode-gradle-3.16.4/lib/gradle-tooling-api-8.8.jar
 /home/shatha/.vscode/extensions/vscjava.vscode-gradle-3.16.4/lib/proto-google-common-protos-2.9.0.jar
 /home/shatha/.vscode/extensions/vscjava.vscode-gradle-3.16.4/lib/guava-31.1-android.jar
@@ -115,5 +122,6 @@
 /home/shatha/.vscode/extensions/redhat.java-1.37.0-linux-x64/lombok/lombok-1.18.34.jar
 /home/shatha/.vscode/extensions/visualstudioexptteam.intellicode-api-usage-examples-0.2.9/dist/server/server.js
 /home/shatha/.vscode/extensions/visualstudioexptteam.intellicode-api-usage-examples-0.2.9/dist/extension.js
-current date: 2024-11-30 19:22:09
-number of files fo: 118
+/home/shatha/OS_Project2/disk_info.log
+current date: 2024-12-01 16:20:21
+number of files fo: 126

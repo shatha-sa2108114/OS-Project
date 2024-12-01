@@ -3,7 +3,7 @@
 copy_to_server() {
     local file_path=$1
     local username="client2"
-    local server_address="localhost"
+    local server_address="localhost"  
     local dest_path="/home/client2"
     
     scp "$file_path" "${username}@${server_address}:${dest_path}"

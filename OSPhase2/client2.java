@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.nio.file.*;
 
-public class client21 {
+public class client2 {
     public static void main(String[] args) {
         Socket client = null;
         BufferedReader from_server = null;
@@ -150,3 +150,4 @@ public class client21 {
         }
     }
 }
+

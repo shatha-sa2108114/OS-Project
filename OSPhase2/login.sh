@@ -5,9 +5,8 @@ AttempsLog="invalid_attempts.log"
 function login() {
     local user="$1"
     local pass="$2"
-    local server="localhost"  #server ip
+    local server="localhost"  # server ip
 
-    #expects terminal request, and sends answer
     expect << EOF
         set timeout 5
         spawn ssh -o StrictHostKeyChecking=no "$user@$server"
@@ -76,8 +75,9 @@ function main() {
     local login_attempt=0
     local logged=false
     
+    # Use default test credentials since we're running locally
     local user="client1"  
-    local pass="amira1998"
+    local pass="amira1998"  
     
     timeStamp=$(date +"%A, %B %d, %Y at %I:%M %p")
     

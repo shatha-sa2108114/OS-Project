@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#print the hostname of the machine 
+#print hostname of the machine 
 echo "hostname: $(hostname)" | tee -a network.log
 
 #print routing table 
@@ -31,7 +31,7 @@ if ping -c 1 -w 5 google.com > /dev/null
          then
             echo "ping to google was successful" | tee -a network.log
         else
-            echo "ping to google was unsuccessful :(, rebooting the machine" | tee -a network.log
+            echo "ping to google was unsuccessful, rebooting the machine :(" | tee -a network.log
     	    sudo reboot
 fi
 
