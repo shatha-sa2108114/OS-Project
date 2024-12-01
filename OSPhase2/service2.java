@@ -4,236 +4,183 @@ import java.nio.file.*;
 import java.util.*;
 
 public class service2 extends Thread {
-    private Socket clientSocket;
+    private Socket client_socket;
     private PrintWriter to_client;
     private BufferedReader from_client;
-    private long lastSystemInfoRequest;
-    private static final Object systemInfoLock = new Object();
-    private static List<ClientInfo> connectedClients = Collections.synchronizedList(new ArrayList<>());
-    private String clientId;
-    
-    static class ClientInfo {
-        String clientId;
-        String ipAddress;
-        long lastRequestTime;
-        int requestCount;
+    private long last_system_request;
 
-        public ClientInfo(String clientId, String ipAddress) {
-            this.clientId = clientId;
-            this.ipAddress = ipAddress;
-            this.lastRequestTime = System.currentTimeMillis();
-            this.requestCount = 0;
+    //for synchronization
+    private static final Object system_info_lock = new Object();
+    private static List<ClientInfo> connected_clients = Collections.synchronizedList(new ArrayList<>());
+    private String client_id;
+    
+    //------------------------------------------ For connection details ------------------------------------------
+    static class ClientInfo {
+        String client_id;
+        String ip_address;
+        long last_request_time;
+        int request_count;
+
+        public ClientInfo(String client_id, String ip_address) {
+            this.client_id = client_id;
+            this.ip_address = ip_address;
+            this.last_request_time = System.currentTimeMillis();
+            this.request_count = 0;
         }
     }
-
-    public service2(Socket clientSocket) {
-        this.clientSocket = clientSocket;
-        this.lastSystemInfoRequest = System.currentTimeMillis();
+    //-----------------------------------------------------------------------------------------------------------
+    public service2(Socket client_socket) {
+        this.client_socket = client_socket;
+        this.last_system_request = System.currentTimeMillis();
     }
 
     @Override
     public void run() {
         try {
-            to_client = new PrintWriter(clientSocket.getOutputStream(), true);
-            from_client = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            OutputStream outStream = clientSocket.getOutputStream();
+            to_client = new PrintWriter(client_socket.getOutputStream(), true);
+            from_client = new BufferedReader(new InputStreamReader(client_socket.getInputStream()));
+            OutputStream out_stream = client_socket.getOutputStream();
 
-            clientId = from_client.readLine();
-            System.out.println("New client connected: " + clientId);
-            ClientInfo client = new ClientInfo(clientId, clientSocket.getInetAddress().getHostAddress());
-            connectedClients.add(client);
-            displayConnectedClients();
+            //get client id and store some info
+            client_id = from_client.readLine();
+            System.out.println("a new client connected =): " + client_id);
+            ClientInfo client_info = new ClientInfo(client_id, client_socket.getInetAddress().getHostAddress());
+            connected_clients.add(client_info);
+            display_connected_clients();
+            run_network_script();
 
-            runNetworkScript();
-
-            String request;
-            while ((request = from_client.readLine()) != null) {
-                if (request.equals("SYSTEM_INFO")) {
-                    System.out.println("Received system info request from " + clientId);
-                    handleSystemInfoRequest(client, outStream);
+            String client_request;
+            //if client requests server info. handdle it
+            while ((client_request = from_client.readLine()) != null) {
+                if (client_request.equals("SYSTEM_INFO")) {
+                    System.out.println("received system info request from " + client_id);
+                    handle_system_info_request(client_info, out_stream);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            cleanup();
+            cleanup_connection();
         }
     }
 
-    private void runNetworkScript() {
+    private void run_network_script() {
         try {
-            System.out.println("Running network script for client: " + clientId);
-            ProcessBuilder pb = new ProcessBuilder("./network.sh", 
-                clientSocket.getInetAddress().getHostAddress());
-            pb.redirectErrorStream(true);
-            Process process = pb.start();
+            System.out.println("running the network script for client: " + client_id);
+            ProcessBuilder process_builder = new ProcessBuilder("./network.sh", 
+                client_socket.getInetAddress().getHostAddress());
+            process_builder.redirectErrorStream(true);
+            Process script_process = process_builder.start();
             
-            BufferedReader reader = new BufferedReader(
-                new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println("Network script output for " + clientId + ": " + line);
+            //get the output of the script and log it
+            BufferedReader script_reader = new BufferedReader(
+                new InputStreamReader(script_process.getInputStream()));
+            String output_line;
+            while ((output_line = script_reader.readLine()) != null) {
+                System.out.println("script output for " + client_id + ": " + output_line);
             }
-            process.waitFor();
-            System.out.println("Network script completed for client: " + clientId);
+            script_process.waitFor();
+            System.out.println("script completed for client: " + client_id +" :)");
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    // private void handleSystemInfoRequest(ClientInfo client, OutputStream outStream) {
-    //     long currentTime = System.currentTimeMillis();
-    //     if (currentTime - lastSystemInfoRequest < 300000) {
-    //         System.out.println("Rejecting request from " + clientId + ": 5-minute cooldown not elapsed");
-    //         to_client.println("ERROR: Please wait 5 minutes between system info requests");
-    //         return;
-    //     }
-
-    //     synchronized (systemInfoLock) {
-    //         try {
-    //             System.out.println("Preparing system info for client: " + clientId);
-    //             ProcessBuilder pb = new ProcessBuilder("./system.sh");
-    //             pb.redirectErrorStream(true);
-    //             Process process = pb.start();
-    //             process.waitFor();
-
-    //             String fileName = "system_info_" + client.clientId + ".txt";
-    //             System.out.println("Creating file: " + fileName);
-
-    //             FileOutputStream fileOut = new FileOutputStream(fileName);
-    //             Files.copy(Paths.get("disk_info.log"), fileOut);
-    //             fileOut.write("\n".getBytes());
-    //             Files.copy(Paths.get("mem_cpu_info.log"), fileOut);
-    //             fileOut.close();
-
-    //             File file = new File(fileName);
-    //             System.out.println("Sending file size (" + file.length() + " bytes) to client: " + clientId);
-    //             to_client.println("FILE_SIZE:" + file.length());
-                
-    //             byte[] buffer = new byte[4096];
-    //             FileInputStream fileIn = new FileInputStream(file);
-    //             int bytesRead;
-    //             long totalBytesSent = 0;
-                
-    //             while ((bytesRead = fileIn.read(buffer)) != -1) {
-    //                 outStream.write(buffer, 0, bytesRead);
-    //                 totalBytesSent += bytesRead;
-    //             }
-    //             outStream.flush();
-    //             fileIn.close();
-
-    //             System.out.println("File sent successfully to " + clientId + ". Total bytes sent: " + totalBytesSent);
-
-    //             client.lastRequestTime = currentTime;
-    //             client.requestCount++;
-    //             lastSystemInfoRequest = currentTime;
-                
-    //             displayConnectedClients();
-
-    //         } catch (IOException | InterruptedException e) {
-    //             System.out.println("Error sending file to " + clientId + ": " + e.getMessage());
-    //             e.printStackTrace();
-    //             to_client.println("ERROR: Failed to get system information");
-    //         }
-    //     }
-    // }
-    private void handleSystemInfoRequest(ClientInfo client, OutputStream outStream) {
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - lastSystemInfoRequest < 300000) {
-            System.out.println("Rejecting request from " + clientId + ": 5-minute cooldown not elapsed");
-            to_client.println("ERROR: Please wait 5 minutes between system info requests");
+    private void handle_system_info_request(ClientInfo client_info, OutputStream out_stream) {
+        long current_time = System.currentTimeMillis();
+        if (current_time - last_system_request < 300000) {
+            System.out.println("rejecting request from " + client_id + " bc of 5-minute cooldown :(");
+            to_client.println("ERROR: wait 5 minutes between system info requests");
             return;
         }
     
-        synchronized (systemInfoLock) {
+        synchronized (system_info_lock) {
             try {
-                System.out.println("Preparing system info for client: " + clientId);
                 
-                // Run system.sh and capture output directly
-                ProcessBuilder pb = new ProcessBuilder("./system.sh");
-                pb.redirectErrorStream(true);
-                System.out.println("Starting system.sh execution...");
-                Process process = pb.start();
+                ProcessBuilder process_builder = new ProcessBuilder("./system.sh");
+                process_builder.redirectErrorStream(true);
+                System.out.println("will execute shell script system.sh");
+                Process script_process = process_builder.start();
                 
-                // Create the output file directly from process output
-                String fileName = "system_info_" + client.clientId + ".txt";
-                System.out.println("Creating file: " + fileName);
-                
-                StringBuilder output = new StringBuilder();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    output.append(line).append("\n");
-                    System.out.println("system.sh output: " + line);
+                //creating a file with client id in name
+                String file_name = "system_info_" + client_info.client_id + ".txt";
+                System.out.println("file: " + file_name);
+                //take script output
+                StringBuilder script_output = new StringBuilder();
+                BufferedReader script_reader = new BufferedReader(
+                    new InputStreamReader(script_process.getInputStream()));
+                String output_line;
+                while ((output_line = script_reader.readLine()) != null) {
+                    script_output.append(output_line).append("\n");
+                    System.out.println("system.sh output: " + output_line);
                 }
                 
-                // Write captured output to file
-                FileOutputStream fileOut = new FileOutputStream(fileName);
-                fileOut.write(output.toString().getBytes());
-                fileOut.close();
+                //save the output in file
+                FileOutputStream file_out = new FileOutputStream(file_name);
+                file_out.write(script_output.toString().getBytes());
+                file_out.close();
     
-                File file = new File(fileName);
-                if (file.length() == 0) {
-                    System.out.println("Warning: Generated file is empty!");
-                    to_client.println("ERROR: No system information generated");
+                File info_file = new File(file_name);
+                if (info_file.length() == 0) {
+                    System.out.println("Warning: file was empty! :(");
+                    to_client.println("ERROR: there was no system info file was empty :(");
                     return;
                 }
     
-                System.out.println("Sending file size (" + file.length() + " bytes) to client: " + clientId);
-                to_client.println("FILE_SIZE:" + file.length());
+                System.out.println("sending file of size: " + info_file.length() + " to client: " + client_id);
+                to_client.println("FILE_SIZE:" + info_file.length());
                 
-                // Send file content
-                FileInputStream fileIn = new FileInputStream(file);
-                byte[] buffer = new byte[4096];
-                int bytesRead;
-                long totalBytesSent = 0;
+                //file transferring
+                FileInputStream file_in = new FileInputStream(info_file);
+                byte[] transfer_buffer = new byte[4096];
+                int bytes_read;
+                long total_bytes_sent = 0;
                 
-                while ((bytesRead = fileIn.read(buffer)) != -1) {
-                    outStream.write(buffer, 0, bytesRead);
-                    totalBytesSent += bytesRead;
-                    System.out.println("Sent " + totalBytesSent + " bytes...");
+                while ((bytes_read = file_in.read(transfer_buffer)) != -1) {
+                    out_stream.write(transfer_buffer, 0, bytes_read);
+                    total_bytes_sent += bytes_read;
+                    System.out.println("sent " + total_bytes_sent + " bytes");
                 }
-                outStream.flush();
-                fileIn.close();
+                out_stream.flush();
+                file_in.close();
     
-                System.out.println("File sent successfully to " + clientId);
-    
-                client.lastRequestTime = currentTime;
-                client.requestCount++;
-                lastSystemInfoRequest = currentTime;
+                System.out.println("file was successfully sent to " + client_id + " :)");
+                //reupdate some client info 
+                client_info.last_request_time = current_time;
+                client_info.request_count++;
+                last_system_request = current_time;
                 
-                displayConnectedClients();
+                display_connected_clients();
     
             } catch (IOException e) {
-                System.out.println("Error in handleSystemInfoRequest: " + e.getMessage());
+                System.out.println("error in the handle_system_info_request: " + e.getMessage());
                 e.printStackTrace();
-                to_client.println("ERROR: Failed to get system information");
+                to_client.println("ERROR: fail to get system info :(");
             }
         }
     }
-    
 
-    private void displayConnectedClients() {
-        System.out.println("\n=== Connected Clients ===");
-        synchronized(connectedClients) {
-            for (ClientInfo client : connectedClients) {
-                System.out.println("Client ID: " + client.clientId);
-                System.out.println("IP Address: " + client.ipAddress);
-                System.out.println("Last Request: " + new Date(client.lastRequestTime));
-                System.out.println("Total Requests: " + client.requestCount);
+    private void display_connected_clients() {
+        System.out.println("\n----------- Connected Clients -----------");
+        synchronized(connected_clients) {
+            for (ClientInfo client : connected_clients) {
+                System.out.println("Client ID: " + client.client_id);
+                System.out.println("IP: " + client.ip_address);
+                System.out.println("Last Request: " + new Date(client.last_request_time));
+                System.out.println("Total Requests: " + client.request_count);
                 System.out.println("------------------------");
             }
         }
     }
 
-    private void cleanup() {
-        System.out.println("Client disconnecting: " + clientId);
-        connectedClients.removeIf(client -> client.clientId.equals(clientId));
-        displayConnectedClients();
+    private void cleanup_connection() {
+        System.out.println("disconnecting client: " + client_id);
+        connected_clients.removeIf(client -> client.client_id.equals(client_id));
+        display_connected_clients();
         try {
             if (to_client != null) to_client.close();
             if (from_client != null) from_client.close();
-            if (clientSocket != null) clientSocket.close();
+            if (client_socket != null) client_socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,8 +5,9 @@ AttempsLog="invalid_attempts.log"
 function login() {
     local user="$1"
     local pass="$2"
-    local server="localhost"  # Changed to localhost since everything is on same VM
+    local server="localhost"  #server ip
 
+    #expects terminal request, and sends answer
     expect << EOF
         set timeout 5
         spawn ssh -o StrictHostKeyChecking=no "$user@$server"
@@ -38,7 +39,7 @@ EOF
 function scp_with_expect() {
     local user="$1"
     local pass="$2"
-    local server="localhost"  # Changed to localhost
+    local server="localhost"  
     local file="$4"
     local path="$5"
 
@@ -75,9 +76,8 @@ function main() {
     local login_attempt=0
     local logged=false
     
-    # Use default test credentials since we're running locally
     local user="client1"  
-    local pass="amira1998"  # Default test password
+    local pass="amira1998"
     
     timeStamp=$(date +"%A, %B %d, %Y at %I:%M %p")
     

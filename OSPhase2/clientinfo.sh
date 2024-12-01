@@ -3,14 +3,14 @@
 copy_to_server() {
     local file_path=$1
     local username="client2"
-    local server_address="localhost"  # changes depending on network
+    local server_address="localhost"
     local dest_path="/home/client2"
     
     scp "$file_path" "${username}@${server_address}:${dest_path}"
 }
 
 cpu_info() {
-    echo "==== CPU Information ===="
+    echo "==== CPU Info ===="
     top -bn1 | grep 'Cpu(s)'
     echo
     echo "---- Top 5 CPU Resource-Consuming Processes ----"
@@ -18,7 +18,7 @@ cpu_info() {
 }
 
 memory_info() {
-    echo "==== Memory Information ===="
+    echo "==== Memory Info ===="
     free -h
     echo
     echo "---- Top 5 Memory Resource-Consuming Processes ----"
@@ -30,7 +30,7 @@ while true; do
     zombie_procs=$(ps aux | grep -w 'Z')
 
     {
-        echo "==== Process Information ===="
+        echo "==== Process Info ===="
         echo "Process Tree:"
         echo "$proc_tree"
         echo

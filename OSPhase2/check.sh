@@ -16,6 +16,6 @@ else
     #change the mod to 700 of each file
     for file in $result_files; do
         chmod 700 "$file"
-        echo "changed permissions of file: '$file' from 777 to 700" | tee "$logfile"
+        echo "changed permissions of file: '$file' from 777 to 700 :)" | tee "$logfile"
     done
 fi
